@@ -13,4 +13,3 @@ class IniReader {
     IniReader(std::string fileName) noexcept(false);
     ~IniReader();
 };
-
