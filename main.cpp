@@ -3,6 +3,6 @@
 
 int main (int argc, char **argv) {
     std::cout << "Hello World!" << std::endl;
-    IniReader reader {"Hello.txt"};
+    IniReader reader {"test.ini"};
     return 0;
 }
