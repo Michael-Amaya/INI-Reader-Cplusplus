@@ -23,6 +23,6 @@ public:
 
     std::map<std::string, std::string>* getSection(std::string section);
     
-    std::string getContents();
-    std::string getSections();
+    std::string getContentData();
+    std::string getSectionData();
 };

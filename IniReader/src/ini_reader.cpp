@@ -57,7 +57,7 @@ bool IniReader::parseIni() {
             continue;
         
         std::string trimmedString = trimString(*line);
-
+        
         // Ignore if it's a comment
         if (trimmedString.at(0) == '#' || trimmedString.at(0) == ';')
             continue;
@@ -103,7 +103,7 @@ std::map<std::string, std::string>* IniReader::getSection(std::string section) {
 }
 
 
-std::string IniReader::getContents() {
+std::string IniReader::getContentData() {
     std::string sectionData {};
 
     for (auto i = iniContents.begin(); i != iniContents.end(); ++i) {
@@ -113,7 +113,7 @@ std::string IniReader::getContents() {
     return sectionData;
 }
 
-std::string IniReader::getSections() {
+std::string IniReader::getSectionData() {
     std::string sectionData {};
 
     for (auto sectionMap = sectionContents.begin();
