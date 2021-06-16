@@ -165,5 +165,11 @@ std::string IniReader::trimString(std::string string) {
     }
 
     trimmedString = string.substr(leftIndex, rightIndex + 1);
+
+    // Check if there's an extra = sign if they didn't provide
+    // a key for the value
+    if (trimmedString.at(trimmedString.length() -1) == '=')
+        trimmedString = trimmedString.substr(0, trimmedString.length() - 1);
+
     return trimmedString;
 }
