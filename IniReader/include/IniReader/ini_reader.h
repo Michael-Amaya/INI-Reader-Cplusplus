@@ -6,15 +6,23 @@
 #include <map>
 
 class IniReader {
-    private:
+private:
+    std::string globalName {};
     std::string fileName {};
-    std::map<std::string, std::string> contents {};
+    std::map<std::string, std::map<std::string, std::string>*> sectionContents {};
     std::vector<std::string> iniContents {};
-    std::ifstream iniFile {};
-    bool parseIni();
+
     bool readIni();
-    void printContents();
-    public:
-    IniReader(std::string fileName) noexcept(false);
+    bool parseIni();
+    void createSectionIfNotExist(std::string section);
+
+    std::string trimString(std::string string);
+public:
+    IniReader(std::string fileName, std::string nameForGlobal = "__global__");
     ~IniReader();
+
+    std::map<std::string, std::string>* getSection(std::string section);
+    
+    std::string getContents();
+    std::string getSections();
 };
