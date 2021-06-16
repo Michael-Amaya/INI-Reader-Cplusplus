@@ -21,8 +21,9 @@ public:
     IniReader(std::string fileName, std::string nameForGlobal = "__global__");
     ~IniReader();
 
+    std::map<std::string, std::string>* getSection();
     std::map<std::string, std::string>* getSection(std::string section);
-    
+
     std::string getContentData();
     std::string getSectionData();
 };
