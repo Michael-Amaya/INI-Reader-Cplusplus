@@ -71,8 +71,10 @@ bool IniReader::parseIni() {
         size_t indexOfEqual = trimmedString.find('=');
         std::string keyValuePair[2];
 
-        if (indexOfEqual == std::string::npos) {
-            keyValuePair[0] = *line;
+        if (indexOfEqual == std::string::npos ||
+            indexOfEqual == trimmedString.length() - 1) 
+        {
+            keyValuePair[0] = trimmedString;
             keyValuePair[1] = "";
         } else {
 
