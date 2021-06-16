@@ -100,7 +100,14 @@ void IniReader::createSectionIfNotExist(std::string section) {
     sectionContents.insert({section, sectionMap});
 } 
 
+std::map<std::string, std::string>* IniReader::getSection() {
+    return getSection(globalName);
+}
+
 std::map<std::string, std::string>* IniReader::getSection(std::string section) {
+    if (!sectionContents.contains(section))
+        throw std::runtime_error(section + " does not exist!");
+
     return sectionContents.at(section);
 }
 
