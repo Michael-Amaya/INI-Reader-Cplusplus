@@ -55,23 +55,30 @@ bool IniReader::parseIni() {
         // Ignore if blank line
         if (line->compare("") == 0)
             continue;
+        
+        std::string trimmedString = trimString(*line);
+
+        // Ignore if it's a comment
+        if (trimmedString.at(0) == '#' || trimmedString.at(0) == ';')
+            continue;
 
         // Check if it's a section header
-        if (line->at(0) == '[' ) {
-            section = line->substr(1, line->length() - 2);
+        if (trimmedString.at(0) == '[' ) {
+            section = trimmedString.substr(1, trimmedString.length() - 2);
             continue;
         }
 
-        size_t indexOfEqual = line->find('=');
+        size_t indexOfEqual = trimmedString.find('=');
         std::string keyValuePair[2];
 
         if (indexOfEqual == std::string::npos) {
             keyValuePair[0] = *line;
             keyValuePair[1] = "";
         } else {
-            keyValuePair[0] = trimString(line->substr(0, indexOfEqual));
-            keyValuePair[1] = trimString(line->substr(indexOfEqual + 1, 
-                                                    line->length() - 1));
+
+            keyValuePair[0] = trimString(trimmedString.substr(0, indexOfEqual));
+            keyValuePair[1] = trimString(trimmedString.substr(indexOfEqual + 1,
+                                                    trimmedString.length() + 1));
         }
 
         createSectionIfNotExist(section);
@@ -128,7 +135,7 @@ std::string IniReader::getSections() {
 
 std::string IniReader::trimString(std::string string) {
     std::string trimmedString {};
-
+    
     size_t leftIndex {0};
     size_t rightIndex {0};
 
@@ -142,12 +149,12 @@ std::string IniReader::trimString(std::string string) {
 
     // Check right
     for (size_t i = string.length() - 1; i != 0; --i) {
-        if (string.at(1) != ' ') {
+        if (string.at(i) != ' ') {
             rightIndex = i;
             break;
         }
     }
 
-    trimmedString = string.substr(leftIndex, rightIndex);
+    trimmedString = string.substr(leftIndex, rightIndex + 1);
     return trimmedString;
 }
