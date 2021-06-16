@@ -2,3 +2,5 @@
 !/build
 /build/*
 !/build/test.ini
+!/build/test2.ini
+!/build/test3.ini
