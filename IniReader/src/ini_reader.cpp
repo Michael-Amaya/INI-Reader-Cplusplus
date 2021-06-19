@@ -148,17 +148,17 @@ std::string IniReader::trimString(std::string string) {
     size_t leftIndex {0};
     size_t rightIndex {0};
 
-    // Check left
+    // Check left for space or \r
     for (size_t i = 0; i < string.length(); ++i) {
-        if (string.at(i) != ' ') {
+        if (string.at(i) != ' ' && string.at(i) != '\r') {
             leftIndex = i;
             break;
         }
     }
 
-    // Check right
+    // Check right for space or \r
     for (size_t i = string.length() - 1; i != 0; --i) {
-        if (string.at(i) != ' ') {
+        if (string.at(i) != ' ' && string.at(i) != '\r') {
             rightIndex = i;
             break;
         }
