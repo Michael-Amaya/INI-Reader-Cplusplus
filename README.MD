@@ -44,6 +44,8 @@ This is supposed to be a fun project so I won't work on this too much. I'll get 
 
 :white_check_mark: means issue is fixed.
 
-:white_medium_square: means issue needs to be fixed.
+:white_large_square: means issue needs to be fixed.
 
-- :white_medium_square: Equal signs in the value of a key/value pair cause program to crash/act unexpectedly.
+- :white_large_square: Equal signs in the value of a key/value pair cause program to crash/act unexpectedly.
+- :white_large_square: On Windows (10), string trimmer does not work properly. Probably has something to do with the fact they use \r\n to make newlines. It causes the sections, keys, and values to have an extra character. 
+
