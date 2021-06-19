@@ -49,3 +49,14 @@ This is supposed to be a fun project so I won't work on this too much. I'll get 
 - :white_large_square: Equal signs in the value of a key/value pair cause program to crash/act unexpectedly.
 - :white_large_square: On Windows (10), string trimmer does not work properly. Probably has something to do with the fact they use \r\n to make newlines. It causes the sections, keys, and values to have an extra character. 
 
+## Compatibility
+:white_check_mark: means working 
+
+:x: means not working
+
+:white_large_square: means haven't tested
+
+This was tested on the following machines/compilers:
+- :white_check_mark: Mac OS 10.x - 11.4 (Apple Clang 12.0.0)
+- :x: Windows 10 (MinGW G++ 10.2.0)
+- :white_large_square: Linux
